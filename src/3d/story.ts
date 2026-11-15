@@ -67,10 +67,6 @@ export const FLASH_AT = 130;
 export const shotAt = (f: number) => SHOTS.find((s) => f >= s.a && f < s.b) ?? SHOTS[SHOTS.length - 1];
 /** layers to draw at frame f: base shot, plus the next shot fading in during a crossfade */
 export const layersAt = (f: number): { id: number; alpha: number }[] => {
-  for (const s of SHOTS) {
-    const x = XFADE[s.id];
-    if (x && f >= s.a - x / 2 && f < s.a + x / 2) return [{ id: s.id - 1, alpha: 1 }, { id: s.id, alpha: (f - (s.a - x / 2) + 1) / (x + 1) }];
-  }
   return [{ id: shotAt(f).id, alpha: 1 }];
 };
 
