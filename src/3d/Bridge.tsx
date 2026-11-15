@@ -56,11 +56,19 @@ const Inner: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => {
     ink: new InkPass(scene, camera as THREE.PerspectiveCamera),
     lens: new LensBlur({ maxCoC: 24, nearScale: 1.2 }),
     bloom: makeBloom(),
-    tone: new ToneMappingEffect({ mode: ToneMappingMode.NEUTRAL }),
+    tone: new ToneMappingEffect({ mode: ToneMappingMode.ACES_FILMIC }),
     grade: new GradeEffect(GRADES.day, GRADE_STRENGTH.day),
     grain: new GrainEffect({ amount: 0.025, cellPx: 1.5 }), // film grain, OFF by default (inputProps post.grain): the reference measures no grain and it quadruples the file size
   }), [camera, scene]);
-  useEffect(() => () => fx.ink.dispose(), [fx]);
+  useEffect(() => {
+    return () => {
+      try {
+        if (fx && fx.ink && typeof (fx.ink as any).dispose === "function") {
+          (fx.ink as any).dispose();
+        }
+      } catch {}
+    };
+  }, [fx]);
   const post = useMemo(() => (
     <EffectComposer multisampling={4}>
       {on.ink ? <primitive object={fx.ink} dispose={null} /> : null}
