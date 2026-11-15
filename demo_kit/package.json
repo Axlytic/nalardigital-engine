@@ -1,0 +1,10 @@
+{
+  "name": "nalardigital-demo-kit",
+  "version": "1.0.0",
+  "description": "Mini demo kit untuk video @nalardigital: Autonomous Agent Harness",
+  "main": "src/checkout.js",
+  "scripts": {
+    "test": "node --test test/checkout.test.js"
+  },
+  "type": "module"
+}

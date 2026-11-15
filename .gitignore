@@ -1,0 +1,20 @@
+# Node & Dependencies
+node_modules/
+.npm/
+
+# Remotion Cache & Builds
+.remotion/
+.webpack/
+
+# Media Outputs
+out/*.mp4
+out/*.png
+!out/preview.png
+
+# Private Style References (Never upload/publish)
+engine_3d/references/
+
+
+# System & OS
+.DS_Store
+Thumbs.db

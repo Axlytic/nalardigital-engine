@@ -1,0 +1,20 @@
+{
+  "name": "nalardigital-animation",
+  "version": "1.0.0",
+  "description": "Video Generator Otomatis @nalardigital menggunakan Remotion",
+  "scripts": {
+    "start": "remotion preview src/index.ts",
+    "render": "remotion render src/index.ts NalarDigital01 out/nalardigital_video_01.mp4 --codec h264 --crf 16"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^8.17.10",
+    "@react-three/postprocessing": "2.16.3",
+    "@remotion/cli": "^4.0.240",
+    "@remotion/three": "^4.0.543",
+    "postprocessing": "^6.39.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.240",
+    "three": "^0.160.0"
+  }
+}
