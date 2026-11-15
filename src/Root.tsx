@@ -1,28 +1,33 @@
 import React from "react";
 import { Composition, Sequence, Audio, staticFile, AbsoluteFill } from "remotion";
+
+// Import Scene Video 01 (Autonomous Agent Harness)
 import { TechBackground } from "./3d/TechBackground";
 import { SceneConcept } from "./scenes/SceneConcept";
 import { SceneArchitecture } from "./scenes/SceneArchitecture";
 import { SyntheticTerminalIDE } from "./scenes/SyntheticTerminalIDE";
 import { SceneOutro } from "./scenes/SceneOutro";
 
+// Import Scene Video 02 (Subsea Internet Cables - Motion 3D)
+import { SubseaGlobeScene } from "./3d/SubseaGlobeScene";
+import { CableCrossSectionScene } from "./3d/CableCrossSectionScene";
+import { DeepSeaAbyssScene } from "./3d/DeepSeaAbyssScene";
+import { SubseaOutroScene } from "./3d/SubseaOutroScene";
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      {/* Komposisi Utama NalarDigital01: Autonomous Agent Harness */}
+      {/* ========================================================
+          VIDEO 01: Autonomous Agent Harness (90s / 2700 frames)
+          ======================================================== */}
       <Composition
         id="NalarDigital01"
         component={() => (
           <AbsoluteFill style={{ backgroundColor: "#06090f" }}>
-            {/* 1. High Performance 3D Three.js Cybernetic Living Background */}
             <AbsoluteFill style={{ opacity: 0.65 }}>
               <TechBackground />
             </AbsoluteFill>
-
-            {/* 2. Audio Voice-Over Neural (id-ID-ArdiNeural, 80s + Outro) */}
             <Audio src={staticFile("voice_over_90s.mp3")} />
-
-            {/* 3. Cinematic Vignette Gradient untuk Kontras Teks Tajam */}
             <AbsoluteFill
               style={{
                 background:
@@ -30,29 +35,59 @@ export const RemotionRoot: React.FC = () => {
                 pointerEvents: "none",
               }}
             />
-
-            {/* Babak 1: Hook & Kurir Copy-Paste Trap (0 - 18s / 540 frames) */}
             <Sequence from={0} durationInFrames={540}>
               <SceneConcept />
             </Sequence>
-
-            {/* Babak 2: Architecture & 4 Aturan Karpathy (18 - 42s / 720 frames) */}
             <Sequence from={540} durationInFrames={720}>
               <SceneArchitecture />
             </Sequence>
-
-            {/* Babak 3: Live Interactive IDE & Self-Healing Terminal (42 - 75s / 990 frames) */}
             <Sequence from={1260} durationInFrames={990}>
               <SyntheticTerminalIDE />
             </Sequence>
-
-            {/* Babak 4: High Value Mental Model & Interactive Outro (75 - 90s / 450 frames) */}
             <Sequence from={2250} durationInFrames={450}>
               <SceneOutro />
             </Sequence>
           </AbsoluteFill>
         )}
         durationInFrames={2700}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
+      {/* ========================================================
+          VIDEO 02: Jalur Kabel Bawah Laut Internet (42s / 1260 frames)
+          Style: 3D Motion Graphic ala @ginaroyoga / @Thehistoryofall_eng
+          ======================================================== */}
+      <Composition
+        id="NalarDigital02"
+        component={() => (
+          <AbsoluteFill style={{ backgroundColor: "#020617" }}>
+            {/* Audio Voice-Over Neural */}
+            <Audio src={staticFile("voice_over_kabel_laut.mp3")} />
+
+            {/* Babak 1: Mitos Satelit vs Realita Samudra (0 - 11s / 330 frames) */}
+            <Sequence from={0} durationInFrames={330}>
+              <SubseaGlobeScene />
+            </Sequence>
+
+            {/* Babak 2: Anatomi 3D Kabel Seukuran Selang Taman (11 - 23s / 360 frames) */}
+            <Sequence from={330} durationInFrames={360}>
+              <CableCrossSectionScene />
+            </Sequence>
+
+            {/* Babak 3: Tekanan 8000m, Gigitan Hiu & Robot ROV (23 - 35s / 360 frames) */}
+            <Sequence from={690} durationInFrames={360}>
+              <DeepSeaAbyssScene />
+            </Sequence>
+
+            {/* Babak 4: Mental Model & Brand Outro (35 - 42s / 210 frames) */}
+            <Sequence from={1050} durationInFrames={210}>
+              <SubseaOutroScene />
+            </Sequence>
+          </AbsoluteFill>
+        )}
+        durationInFrames={1260}
         fps={30}
         width={1080}
         height={1920}
